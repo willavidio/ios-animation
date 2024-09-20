@@ -9,16 +9,25 @@ import UIKit
 
 final class ViewController: UIViewController {
     
-    enum Section: Hashable {
-        case main
+    enum Section: Int, Hashable {
+        case basic = 0
+        case example
     }
     
     enum AnimationType: String, Hashable, CaseIterable {
-        case fadeIn = "Fade In/Out"
+        case fadeInOut = "Fade In/Out"
+        case scaling = "Scaling"
+        case translation = "Translation"
+        case rotation = "Rotation"
+        case example1 = "Example 1"
         
         var destination: UIViewController {
             switch self {
-            case .fadeIn: FadeInOutViewController()
+            case .fadeInOut: FadeInOutViewController()
+            case .scaling: ScaleViewController()
+            case .translation: TranslationViewController()
+            case .rotation: RotationViewController()
+            case .example1: BasicCompositionViewController()
             }
         }
     }
@@ -53,8 +62,9 @@ final class ViewController: UIViewController {
     
     private func populate() {
         var snapshot = NSDiffableDataSourceSnapshot<Section, AnimationType>()
-        snapshot.appendSections([.main])
-        snapshot.appendItems(AnimationType.allCases)
+        snapshot.appendSections([.basic, .example])
+        snapshot.appendItems([.fadeInOut, .scaling, .translation, .rotation], toSection: .basic)
+        snapshot.appendItems([.example1], toSection: .example)
         dataSource.apply(snapshot)
     }
     
@@ -67,14 +77,18 @@ final class ViewController: UIViewController {
             content.text = item.rawValue.capitalized
             cell.contentConfiguration = content
         }
+        
+        let dataSource = DataSource(
+            collectionView: collectionView
+        ) { collectionView, indexPath, itemIdentifier in
+                collectionView.dequeueConfiguredReusableCell(
+                    using: cellRegistration,
+                    for: indexPath,
+                    item: itemIdentifier
+                )
+            }
 
-        return DataSource(collectionView: collectionView) { collectionView, indexPath, itemIdentifier in
-            collectionView.dequeueConfiguredReusableCell(
-                using: cellRegistration,
-                for: indexPath,
-                item: itemIdentifier
-            )
-        }
+        return dataSource
     }
 }
 
@@ -84,8 +98,9 @@ extension ViewController: UICollectionViewDelegate {
         _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath
     ) {
+        guard let section = Section(rawValue: indexPath.section) else { return }
         collectionView.deselectItem(at: indexPath, animated: true)
-        let item = dataSource.snapshot(for: .main).items[indexPath.item]
+        let item = dataSource.snapshot(for: section).items[indexPath.item]
         let destination = item.destination
         destination.title = item.rawValue
         destination.view.backgroundColor = .systemBackground
