@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		236CA3E02C9D220600E4F610 /* FadeInOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236CA3DF2C9D21FD00E4F610 /* FadeInOutViewController.swift */; };
+		236CA40F2C9D241800E4F610 /* UIView+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236CA40E2C9D241800E4F610 /* UIView+Helper.swift */; };
+		236CA43E2C9D26BA00E4F610 /* UIButton+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236CA43D2C9D26BA00E4F610 /* UIButton+Helper.swift */; };
+		236CA4402C9D27C000E4F610 /* BoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236CA43F2C9D27C000E4F610 /* BoxView.swift */; };
 		23C065EA2C9924F10098AA90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C065E92C9924F10098AA90 /* AppDelegate.swift */; };
 		23C065EC2C9924F10098AA90 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C065EB2C9924F10098AA90 /* SceneDelegate.swift */; };
 		23C065EE2C9924F10098AA90 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C065ED2C9924F10098AA90 /* ViewController.swift */; };
@@ -35,6 +39,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		236CA3DF2C9D21FD00E4F610 /* FadeInOutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeInOutViewController.swift; sourceTree = "<group>"; };
+		236CA40E2C9D241800E4F610 /* UIView+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Helper.swift"; sourceTree = "<group>"; };
+		236CA43D2C9D26BA00E4F610 /* UIButton+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Helper.swift"; sourceTree = "<group>"; };
+		236CA43F2C9D27C000E4F610 /* BoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxView.swift; sourceTree = "<group>"; };
 		23C065E62C9924F10098AA90 /* ios-animation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-animation.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		23C065E92C9924F10098AA90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23C065EB2C9924F10098AA90 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -74,6 +82,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		236CA3DE2C9D21E500E4F610 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				236CA3DF2C9D21FD00E4F610 /* FadeInOutViewController.swift */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
+		236CA40D2C9D240E00E4F610 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				236CA43F2C9D27C000E4F610 /* BoxView.swift */,
+				236CA43D2C9D26BA00E4F610 /* UIButton+Helper.swift */,
+				236CA40E2C9D241800E4F610 /* UIView+Helper.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		236CA4102C9D24A100E4F610 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				23C065E92C9924F10098AA90 /* AppDelegate.swift */,
+				23C065EB2C9924F10098AA90 /* SceneDelegate.swift */,
+				23C065ED2C9924F10098AA90 /* ViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		23C065DD2C9924F10098AA90 = {
 			isa = PBXGroup;
 			children = (
@@ -97,9 +133,9 @@
 		23C065E82C9924F10098AA90 /* ios-animation */ = {
 			isa = PBXGroup;
 			children = (
-				23C065E92C9924F10098AA90 /* AppDelegate.swift */,
-				23C065EB2C9924F10098AA90 /* SceneDelegate.swift */,
-				23C065ED2C9924F10098AA90 /* ViewController.swift */,
+				236CA4102C9D24A100E4F610 /* Main */,
+				236CA3DE2C9D21E500E4F610 /* Animation */,
+				236CA40D2C9D240E00E4F610 /* Helper */,
 				23C065F22C9924F20098AA90 /* Assets.xcassets */,
 				23C065F42C9924F20098AA90 /* LaunchScreen.storyboard */,
 				23C065F72C9924F20098AA90 /* Info.plist */,
@@ -254,9 +290,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				236CA4402C9D27C000E4F610 /* BoxView.swift in Sources */,
 				23C065EE2C9924F10098AA90 /* ViewController.swift in Sources */,
+				236CA43E2C9D26BA00E4F610 /* UIButton+Helper.swift in Sources */,
 				23C065EA2C9924F10098AA90 /* AppDelegate.swift in Sources */,
+				236CA3E02C9D220600E4F610 /* FadeInOutViewController.swift in Sources */,
 				23C065EC2C9924F10098AA90 /* SceneDelegate.swift in Sources */,
+				236CA40F2C9D241800E4F610 /* UIView+Helper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

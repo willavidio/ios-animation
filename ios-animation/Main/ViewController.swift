@@ -15,12 +15,18 @@ final class ViewController: UIViewController {
     
     enum AnimationType: String, Hashable, CaseIterable {
         case fadeIn = "Fade In/Out"
+        
+        var destination: UIViewController {
+            switch self {
+            case .fadeIn: FadeInOutViewController()
+            }
+        }
     }
     
     private typealias DataSource = UICollectionViewDiffableDataSource<Section, AnimationType>
     
     private lazy var collectionView: UICollectionView = {
-        let config = UICollectionLayoutListConfiguration(appearance: .grouped)
+        let config = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
         let layout = UICollectionViewCompositionalLayout.list(using: config)
         return UICollectionView(frame: .zero, collectionViewLayout: layout)
     }()
@@ -79,5 +85,11 @@ extension ViewController: UICollectionViewDelegate {
         didSelectItemAt indexPath: IndexPath
     ) {
         collectionView.deselectItem(at: indexPath, animated: true)
+        let item = dataSource.snapshot(for: .main).items[indexPath.item]
+        let destination = item.destination
+        destination.title = item.rawValue
+        destination.view.backgroundColor = .systemBackground
+        destination.navigationItem.largeTitleDisplayMode = .never
+        navigationController?.pushViewController(destination, animated: true)
     }
 }
