@@ -12,6 +12,13 @@ final class ViewController: UIViewController {
     enum Section: Int, Hashable {
         case basic = 0
         case example
+        
+        var title: String {
+            switch self {
+            case .basic: "Basic Animation"
+            case .example: "Example Animation"
+            }
+        }
     }
     
     enum AnimationType: String, Hashable, CaseIterable {
@@ -35,7 +42,8 @@ final class ViewController: UIViewController {
     private typealias DataSource = UICollectionViewDiffableDataSource<Section, AnimationType>
     
     private lazy var collectionView: UICollectionView = {
-        let config = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
+        var config = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
+        config.headerMode = .supplementary
         let layout = UICollectionViewCompositionalLayout.list(using: config)
         return UICollectionView(frame: .zero, collectionViewLayout: layout)
     }()
@@ -87,6 +95,17 @@ final class ViewController: UIViewController {
                     item: itemIdentifier
                 )
             }
+        
+        let headerRegistration = UICollectionView.SupplementaryRegistration<UICollectionViewListCell>(elementKind: UICollectionView.elementKindSectionHeader) { supplementaryView, _, indexPath in
+            let section = Section(rawValue: indexPath.section)!
+            var content = supplementaryView.defaultContentConfiguration()
+            content.text = section.title
+            supplementaryView.contentConfiguration = content
+        }
+        
+        dataSource.supplementaryViewProvider = { collectionView, kind, indexPath in
+            return collectionView.dequeueConfiguredReusableSupplementary(using: headerRegistration, for: indexPath)
+        }
 
         return dataSource
     }
