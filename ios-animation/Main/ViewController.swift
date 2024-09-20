@@ -16,7 +16,7 @@ final class ViewController: UIViewController {
         var title: String {
             switch self {
             case .basic: "Basic Animation"
-            case .example: "Example Animation"
+            case .example: "Example Interaction"
             }
         }
     }
@@ -27,6 +27,8 @@ final class ViewController: UIViewController {
         case translation = "Translation"
         case rotation = "Rotation"
         case example1 = "Example 1"
+        case transition = "Transition"
+        case dragable = "Dragable"
         
         var destination: UIViewController {
             switch self {
@@ -35,6 +37,8 @@ final class ViewController: UIViewController {
             case .translation: TranslationViewController()
             case .rotation: RotationViewController()
             case .example1: BasicCompositionViewController()
+            case .transition: TransitionViewController()
+            case .dragable: DragableViewController()
             }
         }
     }
@@ -72,7 +76,7 @@ final class ViewController: UIViewController {
         var snapshot = NSDiffableDataSourceSnapshot<Section, AnimationType>()
         snapshot.appendSections([.basic, .example])
         snapshot.appendItems([.fadeInOut, .scaling, .translation, .rotation], toSection: .basic)
-        snapshot.appendItems([.example1], toSection: .example)
+        snapshot.appendItems([.example1, .transition, .dragable], toSection: .example)
         dataSource.apply(snapshot)
     }
     

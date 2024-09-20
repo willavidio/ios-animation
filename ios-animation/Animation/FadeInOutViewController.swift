@@ -10,7 +10,7 @@ import UIKit
 final class FadeInOutViewController: UIViewController {
     
     private let boxView = BoxView(color: .red)
-    private lazy var button = UIButton(type: .system)
+    private lazy var button = UIButton(configuration: .tinted())
         .title("Animate")
         .onTapAction { [weak self] in
             UIView.animate(withDuration: 0.3) { [weak self] in

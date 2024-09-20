@@ -12,6 +12,7 @@ extension UIView {
     enum ConstraintType {
         case fill
         case center
+        case safeArea
         case bottomCenter
     }
     
@@ -30,6 +31,13 @@ extension UIView {
             NSLayoutConstraint.activate([
                 view.centerXAnchor.constraint(equalTo: centerXAnchor),
                 view.centerYAnchor.constraint(equalTo: centerYAnchor)
+            ])
+        case .safeArea:
+            NSLayoutConstraint.activate([
+                view.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+                view.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+                view.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+                view.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor)
             ])
         case .bottomCenter:
             NSLayoutConstraint.activate([

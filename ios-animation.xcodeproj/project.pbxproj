@@ -16,6 +16,8 @@
 		236CA4462C9D2AD100E4F610 /* RotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236CA4452C9D2ACE00E4F610 /* RotationViewController.swift */; };
 		236CA4482C9D2BFD00E4F610 /* BasicCompositionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236CA4472C9D2BFC00E4F610 /* BasicCompositionViewController.swift */; };
 		236CA44A2C9D2E3F00E4F610 /* VStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236CA4492C9D2E3F00E4F610 /* VStackView.swift */; };
+		236CA44C2C9D647500E4F610 /* TransitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236CA44B2C9D647000E4F610 /* TransitionViewController.swift */; };
+		236CA44E2C9D6BB600E4F610 /* DragableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236CA44D2C9D6BB200E4F610 /* DragableViewController.swift */; };
 		23C065EA2C9924F10098AA90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C065E92C9924F10098AA90 /* AppDelegate.swift */; };
 		23C065EC2C9924F10098AA90 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C065EB2C9924F10098AA90 /* SceneDelegate.swift */; };
 		23C065EE2C9924F10098AA90 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C065ED2C9924F10098AA90 /* ViewController.swift */; };
@@ -53,6 +55,8 @@
 		236CA4452C9D2ACE00E4F610 /* RotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationViewController.swift; sourceTree = "<group>"; };
 		236CA4472C9D2BFC00E4F610 /* BasicCompositionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicCompositionViewController.swift; sourceTree = "<group>"; };
 		236CA4492C9D2E3F00E4F610 /* VStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VStackView.swift; sourceTree = "<group>"; };
+		236CA44B2C9D647000E4F610 /* TransitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionViewController.swift; sourceTree = "<group>"; };
+		236CA44D2C9D6BB200E4F610 /* DragableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragableViewController.swift; sourceTree = "<group>"; };
 		23C065E62C9924F10098AA90 /* ios-animation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-animation.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		23C065E92C9924F10098AA90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23C065EB2C9924F10098AA90 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -95,11 +99,13 @@
 		236CA3DE2C9D21E500E4F610 /* Animation */ = {
 			isa = PBXGroup;
 			children = (
+				236CA44B2C9D647000E4F610 /* TransitionViewController.swift */,
 				236CA4432C9D29E400E4F610 /* TranslationViewController.swift */,
 				236CA4412C9D28FC00E4F610 /* ScaleViewController.swift */,
 				236CA4452C9D2ACE00E4F610 /* RotationViewController.swift */,
 				236CA3DF2C9D21FD00E4F610 /* FadeInOutViewController.swift */,
 				236CA4472C9D2BFC00E4F610 /* BasicCompositionViewController.swift */,
+				236CA44D2C9D6BB200E4F610 /* DragableViewController.swift */,
 			);
 			path = Animation;
 			sourceTree = "<group>";
@@ -317,6 +323,8 @@
 				23C065EC2C9924F10098AA90 /* SceneDelegate.swift in Sources */,
 				236CA40F2C9D241800E4F610 /* UIView+Helper.swift in Sources */,
 				236CA4442C9D29E900E4F610 /* TranslationViewController.swift in Sources */,
+				236CA44E2C9D6BB600E4F610 /* DragableViewController.swift in Sources */,
+				236CA44C2C9D647500E4F610 /* TransitionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
