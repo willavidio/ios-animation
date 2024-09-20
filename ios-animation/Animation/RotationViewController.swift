@@ -18,7 +18,7 @@ final class RotationViewController: UIViewController {
                 if let isRotate = self?.isRotate, isRotate {
                     self?.boxView.transform = .identity
                 } else {
-                    self?.boxView.transform = .init(rotationAngle: 180)
+                    self?.boxView.transform = .init(rotationAngle: .pi)
                 }
                 self?.isRotate.toggle()
             }
