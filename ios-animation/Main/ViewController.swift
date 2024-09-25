@@ -29,6 +29,8 @@ final class ViewController: UIViewController {
         case example1 = "Example 1"
         case transition = "Transition"
         case dragable = "Dragable"
+        case floatingMenu = "Floating Menu"
+        case animationProperties = "Animation Properties"
         
         var destination: UIViewController {
             switch self {
@@ -39,6 +41,8 @@ final class ViewController: UIViewController {
             case .example1: BasicCompositionViewController()
             case .transition: TransitionViewController()
             case .dragable: DragableViewController()
+            case .floatingMenu: FloatingMenuViewController()
+            case .animationProperties: AnimationPropertyViewController()
             }
         }
     }
@@ -75,8 +79,8 @@ final class ViewController: UIViewController {
     private func populate() {
         var snapshot = NSDiffableDataSourceSnapshot<Section, AnimationType>()
         snapshot.appendSections([.basic, .example])
-        snapshot.appendItems([.fadeInOut, .scaling, .translation, .rotation], toSection: .basic)
-        snapshot.appendItems([.example1, .transition, .dragable], toSection: .example)
+        snapshot.appendItems([.fadeInOut, .scaling, .translation, .rotation, .animationProperties], toSection: .basic)
+        snapshot.appendItems([.example1, .transition, .dragable, .floatingMenu], toSection: .example)
         dataSource.apply(snapshot)
     }
     

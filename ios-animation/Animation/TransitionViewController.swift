@@ -31,33 +31,65 @@ final class TransitionViewController: UIViewController {
         }
     }
     
+    enum PresentationStyle: CaseIterable {
+        case fullScreen
+        case pageSheet
+        
+        var style: UIModalPresentationStyle {
+            return switch self {
+            case .fullScreen: .fullScreen
+            case .pageSheet: .pageSheet
+            }
+        }
+        
+        var title: String {
+            return switch self {
+            case .fullScreen: "Full Screen"
+            case .pageSheet: "Page Sheet"
+            }
+        }
+    }
+    
     private var style: UIModalTransitionStyle = .coverVertical
+    private var modalPresentation: UIModalPresentationStyle = .fullScreen
     
     private lazy var presentButton = UIButton(type: .system)
         .title("Present")
         .onTapAction { [weak self] in
             let vc = TargetViewController()
-            vc.modalPresentationStyle = .fullScreen
+            vc.modalPresentationStyle = self?.modalPresentation ?? .fullScreen
             vc.modalTransitionStyle = self?.style ?? .coverVertical
             self?.present(vc, animated: true)
         }
     
-    private lazy var styleButton = UIButton(configuration: .tinted())
-        .title("Cover Vertical")
+    private lazy var modalTransitionStyleButton = UIButton(configuration: .tinted())
+        .title("Transition: Cover Vertical")
+    
+    private lazy var modalPresentationStyleButton = UIButton(configuration: .tinted())
+        .title("Presentation: FullScreen")
     
     override func viewDidLoad() {
         super.viewDidLoad()
        
-        styleButton.showsMenuAsPrimaryAction = true
-        styleButton.menu = UIMenu(children: Style.allCases.map { style in
+        modalTransitionStyleButton.showsMenuAsPrimaryAction = true
+        modalTransitionStyleButton.menu = UIMenu(children: Style.allCases.map { style in
             UIAction(title: style.title) { [weak self] _ in
                 self?.style = style.style
-                self?.styleButton.title(style.title)
+                self?.modalTransitionStyleButton.title("Transition:" + style.title)
             }
         })
         
-        view.addSubview(VStackView {
-            styleButton
+        modalPresentationStyleButton.showsMenuAsPrimaryAction = true
+        modalPresentationStyleButton.menu = UIMenu(children: PresentationStyle.allCases.map { style in
+            UIAction(title: style.title) { [weak self] _ in
+                self?.modalPresentation = style.style
+                self?.modalPresentationStyleButton.title("Presentation:" + style.title)
+            }
+        })
+        
+        view.addSubview(VStackView(spacing: 4) {
+            modalTransitionStyleButton
+            modalPresentationStyleButton
             presentButton
         }, constraints: .center)
     }
